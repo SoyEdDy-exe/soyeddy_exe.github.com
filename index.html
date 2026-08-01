@@ -480,6 +480,17 @@
 }
     </style>
 </head>
+    
+    <iframe
+    id="musica"
+    width="1"
+    height="1"
+    src="https://www.youtube.com/embed/zIo2n4NN_zU?enablejsapi=1&autoplay=0&loop=1&playlist=zIo2n4NN_zU"
+    title="Música"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    style="position:fixed; bottom:0; left:0; opacity:0; pointer-events:none;">
+</iframe>
 
 <body>
     
@@ -618,9 +629,9 @@
             Desde el 25 de septiembre de 2022
         </p>
 
-        <button class="boton" onclick="entrar()">
+        <button class="boton" onclick="entrar(); reproducirCancion();">
     Entrá aquí 💕
-        </button>
+    </button>
 
     </main>
     
@@ -639,6 +650,19 @@
     
     
     <script>
+        
+        function reproducirCancion() {
+    const iframe = document.getElementById("musica");
+
+    iframe.contentWindow.postMessage(
+        JSON.stringify({
+            event: "command",
+            func: "playVideo",
+            args: []
+        }),
+        "*"
+    );
+}
         
          const fotos = Array.from(document.querySelectorAll('.galeria img'));
 
