@@ -261,7 +261,88 @@
     margin-top: 20px;
 }
 
+        .galeria-seccion {
+    margin-top: 70px;
+    padding-bottom: 50px;
+}
+
+.galeria-seccion h2 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.subtitulo-galeria {
+    font-size: 18px;
+    opacity: .75;
+    margin-bottom: 30px;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.galeria img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,.35);
+}
+
+.galeria img:hover {
+    transform: scale(1.04);
+}
+
+.mascotas {
+    margin-top: 50px;
+}
+
+.mascotas h3 {
+    font-size: 27px;
+    margin: 30px 0 18px;
+}
+
+.camila {
+    margin-top: 70px;
+    padding-bottom: 80px;
+}
+
+.camila p {
+    font-size: 19px;
+    font-style: italic;
+    opacity: .8;
+    margin-bottom: 30px;
+}
+
+.camila img {
+    width: 100%;
+    max-width: 500px;
+    max-height: 650px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+
 @media (max-width: 600px) {
+    
+    .galeria {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.galeria-seccion h2 {
+    font-size: 30px;
+}
+
+.camila h2 {
+    font-size: 30px;
+}
 
     .contenido-historia h2 {
         font-size: 38px;
@@ -336,6 +417,64 @@
         <p class="final-historia">
             Y todavía nos queda muchísimo por vivir. ❤️
         </p>
+        
+        <div class="galeria-seccion">
+
+    <h2>Nuestros recuerdos ❤️</h2>
+
+    <p class="subtitulo-galeria">
+        Cada foto guarda un momento que quiero volver a vivir.
+    </p>
+
+    <div class="galeria">
+
+        <img src="fotos/foto%201.png" alt="Nuestro recuerdo 1">
+        <img src="fotos/foto%202.png" alt="Nuestro recuerdo 2">
+        <img src="fotos/foto%203.png" alt="Nuestro recuerdo 3">
+        <img src="fotos/foto%204.png" alt="Nuestro recuerdo 4">
+        <img src="fotos/foto%205.png" alt="Nuestro recuerdo 5">
+        <img src="fotos/foto%206.png" alt="Nuestro recuerdo 6">
+        <img src="fotos/foto%207.png" alt="Nuestro recuerdo 7">
+        <img src="fotos/foto%208.png" alt="Nuestro recuerdo 8">
+        <img src="fotos/foto%209.png" alt="Nuestro recuerdo 9">
+        <img src="fotos/foto%2010.png" alt="Nuestro recuerdo 10">
+        <img src="fotos/foto%2011.png" alt="Nuestro recuerdo 11">
+        <img src="fotos/foto%2012.png" alt="Nuestro recuerdo 12">
+
+    </div>
+
+    <div class="mascotas">
+
+        <h2>🐾 Los pequeños integrantes de nuestra historia</h2>
+
+        <h3>Nalita 🐱💕</h3>
+
+        <div class="galeria">
+            <img src="fotos/foto%2013.png" alt="Nalita">
+            <img src="fotos/foto%2014.png" alt="Nalita">
+        </div>
+
+        <h3>Doby 🐱❤️</h3>
+
+        <div class="galeria">
+            <img src="fotos/foto%2015.png" alt="Doby">
+        </div>
+
+    </div>
+
+    <div class="camila">
+
+        <h2>Y después estás vos... ❤️</h2>
+
+        <p>
+            La persona que hace que todo tenga sentido.
+        </p>
+
+        <img src="fotos/foto%2016.png" alt="Camila">
+
+    </div>
+
+</div>
 
     </div>
 
