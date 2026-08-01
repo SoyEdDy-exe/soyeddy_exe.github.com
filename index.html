@@ -167,6 +167,8 @@
             }
         }
         .portada {
+    position: relative;
+    z-index: 20;
     transition: opacity .7s ease, transform .7s ease;
 }
 
@@ -177,11 +179,10 @@
 }
 
 .historia {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
+    inset: 0;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -191,7 +192,9 @@
     transform: translateY(30px);
     transition: opacity .8s ease, transform .8s ease;
     overflow-y: auto;
-    z-index: 5;
+    z-index: 10;
+    background:
+        radial-gradient(circle at center, #4b1834 0%, #210b18 45%, #10050b 100%);
 }
 
 .historia.mostrar {
