@@ -380,6 +380,103 @@
         font-size: 28px;
     }
 }
+        .visor-fotos {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease;
+}
+
+.visor-fotos.mostrar {
+    opacity: 1;
+    visibility: visible;
+}
+
+#fotoGrande {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(255, 255, 255, .15);
+    transform: scale(.9);
+    transition: transform .3s ease;
+}
+
+.visor-fotos.mostrar #fotoGrande {
+    transform: scale(1);
+}
+
+.cerrar-visor {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+    z-index: 102;
+}
+
+.flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(255,255,255,.12);
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.flecha:hover {
+    background: rgba(255,255,255,.25);
+}
+
+.flecha.izquierda {
+    left: 25px;
+}
+
+.flecha.derecha {
+    right: 25px;
+}
+
+@media (max-width: 600px) {
+
+    #fotoGrande {
+        max-width: 92%;
+        max-height: 75%;
+    }
+
+    .flecha {
+        width: 45px;
+        height: 45px;
+        font-size: 32px;
+    }
+
+    .flecha.izquierda {
+        left: 10px;
+    }
+
+    .flecha.derecha {
+        right: 10px;
+    }
+
+    .cerrar-visor {
+        top: 10px;
+        right: 15px;
+    }
+}
     </style>
 </head>
 
@@ -525,6 +622,76 @@
         </button>
 
     </main>
+    
+     <div class="visor-fotos" id="visorFotos">
+
+    <button class="cerrar-visor" onclick="cerrarFoto()">×</button>
+
+    <button class="flecha izquierda" onclick="fotoAnterior()">‹</button>
+
+    <img id="fotoGrande" src="" alt="">
+
+    <button class="flecha derecha" onclick="fotoSiguiente()">›</button>
+
+</div>
+
+    const fotos = Array.from(document.querySelectorAll('.galeria img'));
+
+const visor = document.getElementById('visorFotos');
+const fotoGrande = document.getElementById('fotoGrande');
+
+let fotoActual = 0;
+
+fotos.forEach((foto, indice) => {
+
+    foto.addEventListener('click', () => {
+
+        fotoActual = indice;
+
+        fotoGrande.src = foto.src;
+        fotoGrande.alt = foto.alt;
+
+        visor.classList.add('mostrar');
+
+    });
+
+});
+
+function cerrarFoto() {
+    visor.classList.remove('mostrar');
+}
+
+function fotoSiguiente() {
+
+    fotoActual++;
+
+    if (fotoActual >= fotos.length) {
+        fotoActual = 0;
+    }
+
+    fotoGrande.src = fotos[fotoActual].src;
+    fotoGrande.alt = fotos[fotoActual].alt;
+}
+
+function fotoAnterior() {
+
+    fotoActual--;
+
+    if (fotoActual < 0) {
+        fotoActual = fotos.length - 1;
+    }
+
+    fotoGrande.src = fotos[fotoActual].src;
+    fotoGrande.alt = fotos[fotoActual].alt;
+}
+
+visor.addEventListener('click', (e) => {
+
+    if (e.target === visor) {
+        cerrarFoto();
+    }
+
+});
     
     <script>
     function entrar() {
