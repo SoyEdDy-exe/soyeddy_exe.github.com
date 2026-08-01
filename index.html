@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para vos ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #160812, #3b1025, #160812);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 700px;
+            padding: 40px 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .corazon {
+            font-size: 70px;
+            animation: latido 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+        }
+
+        .subtitulo {
+            font-size: 21px;
+            opacity: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            background: #ff4f81;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(255, 79, 129, 0.4);
+        }
+
+        .boton:hover {
+            transform: scale(1.08);
+            background: #ff6d97;
+            box-shadow: 0 0 30px rgba(255, 79, 129, 0.7);
+        }
+
+        .corazones {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .corazones span {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            opacity: 0.6;
+            animation: subir 8s linear infinite;
+        }
+
+        .corazones span:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .corazones span:nth-child(2) {
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        .corazones span:nth-child(3) {
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        .corazones span:nth-child(4) {
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .corazones span:nth-child(5) {
+            left: 90%;
+            animation-delay: 3s;
+        }
+
+        @keyframes latido {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitulo {
+                font-size: 18px;
+            }
+
+            .corazon {
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="corazones">
+        <span>❤️</span>
+        <span>💕</span>
+        <span>❤️</span>
+        <span>💗</span>
+        <span>❤️</span>
+    </div>
+
+    <main class="contenedor">
+
+        <div class="corazon">❤️</div>
+
+        <h1>Para vos</h1>
+
+        <p class="subtitulo">
+            Un pequeño lugar hecho especialmente para vos.
+        </p>
+
+        <a href="#" class="boton">
+            Entrar a nuestro mundo 💕
+        </a>
+
+    </main>
+
+</body>
+</html>
