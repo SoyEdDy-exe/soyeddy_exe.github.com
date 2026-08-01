@@ -166,10 +166,180 @@
                 font-size: 60px;
             }
         }
+        .portada {
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.portada.salir {
+    opacity: 0;
+    transform: scale(.95);
+    pointer-events: none;
+}
+
+.historia {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: opacity .8s ease, transform .8s ease;
+    overflow-y: auto;
+    z-index: 5;
+}
+
+.historia.mostrar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.contenido-historia {
+    width: 100%;
+    max-width: 750px;
+    padding: 40px 20px;
+}
+
+.contenido-historia h2 {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.texto-historia {
+    font-size: 19px;
+    line-height: 1.8;
+    opacity: .9;
+    max-width: 650px;
+    margin: auto;
+}
+
+.fecha-grande {
+    font-size: 30px;
+    letter-spacing: 8px;
+    margin: 35px 0;
+}
+
+.contador-titulo {
+    font-size: 18px;
+    opacity: .8;
+    margin-bottom: 20px;
+}
+
+.contador {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.contador div {
+    min-width: 100px;
+    padding: 20px 15px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+}
+
+.contador span {
+    display: block;
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.contador small {
+    display: block;
+    margin-top: 5px;
+    opacity: .7;
+}
+
+.final-historia {
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+
+    .contenido-historia h2 {
+        font-size: 38px;
+    }
+
+    .fecha-grande {
+        font-size: 22px;
+        letter-spacing: 5px;
+    }
+
+    .contador {
+        gap: 8px;
+    }
+
+    .contador div {
+        min-width: 85px;
+        padding: 15px 8px;
+    }
+
+    .contador span {
+        font-size: 28px;
+    }
+}
     </style>
 </head>
 
 <body>
+    
+    <div class="historia">
+
+    <div class="contenido-historia">
+
+        <div class="corazon">❤️</div>
+
+        <p class="pequeno">Desde aquel día...</p>
+
+        <h2>Nuestra historia</h2>
+
+        <p class="texto-historia">
+            El 25 de septiembre de 2022 comenzó nuestra historia.
+            Desde entonces, cada momento a tu lado se convirtió
+            en un recuerdo que quiero guardar para siempre.
+        </p>
+
+        <div class="fecha-grande">
+            25 · 09 · 2022
+        </div>
+
+        <p class="contador-titulo">
+            Llevamos juntos...
+        </p>
+
+        <div class="contador">
+
+            <div>
+                <span id="años">0</span>
+                <small>Años</small>
+            </div>
+
+            <div>
+                <span id="meses">0</span>
+                <small>Meses</small>
+            </div>
+
+            <div>
+                <span id="dias">0</span>
+                <small>Días</small>
+            </div>
+
+        </div>
+
+        <p class="final-historia">
+            Y todavía nos queda muchísimo por vivir. ❤️
+        </p>
+
+    </div>
+
+</div>
 
     <div class="corazones">
         <span>❤️</span>
@@ -179,7 +349,7 @@
         <span>💖</span>
     </div>
 
-    <main class="contenedor">
+    <main class="contenedor portada">
 
         <div class="corazon">❤️</div>
 
@@ -203,9 +373,45 @@
     
     <script>
     function entrar() {
-        alert("Te amo, Mema ❤️");
+        document.querySelector('.portada').classList.add('salir');
+
+        setTimeout(() => {
+            document.querySelector('.historia').classList.add('mostrar');
+        }, 700);
     }
-</script>
+
+    function actualizarContador() {
+        const inicio = new Date(2022, 8, 25);
+        const ahora = new Date();
+
+        let años = ahora.getFullYear() - inicio.getFullYear();
+        let meses = ahora.getMonth() - inicio.getMonth();
+        let dias = ahora.getDate() - inicio.getDate();
+
+        if (dias < 0) {
+            meses--;
+            const ultimoMes = new Date(
+                ahora.getFullYear(),
+                ahora.getMonth(),
+                0
+            ).getDate();
+
+            dias += ultimoMes;
+        }
+
+        if (meses < 0) {
+            años--;
+            meses += 12;
+        }
+
+        document.getElementById('años').textContent = años;
+        document.getElementById('meses').textContent = meses;
+        document.getElementById('dias').textContent = dias;
+    }
+
+    actualizarContador();
+    setInterval(actualizarContador, 60000);
+    </script>
 
 </body>
 </html>
